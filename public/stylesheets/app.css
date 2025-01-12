@@ -1,0 +1,304 @@
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.bs-header {
+  position: relative;
+  padding: 30px 15px;
+  font-size: 20px;
+  color: #cdbfe3;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  background-color: #6f5499;
+  background-image: -webkit-linear-gradient(top, #563d7c 0, #6f5499 100%);
+  background-image: linear-gradient(to bottom, #563d7c 0, #6f5499 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+}
+.bs-header h1 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.add-contact-button {
+  background-color: white; /* Button background color */
+  color: #5e2a82; /* Text color */
+  border: 2px solid #5e2a82; /* Border color and width */
+  padding: 10px 20px; /* Padding inside the button */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Font weight */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-align: center; /* Center the text */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+  margin-bottom: 10px; /* Space between button and search bar */
+}
+
+.add-contact-button:hover {
+  background-color: #5e2a82; /* Background color on hover */
+  color: white; /* Text color on hover */
+}
+
+.search-bar {
+  margin-top: 20px; /* Space between search bar and button */
+  padding: 10px; /* Padding inside the search bar */
+  border: 1px solid #ccc; /* Border color and width */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+}
+
+.form-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.form-container h2 {
+  text-align: center;
+}
+.form-update-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.form-update-container h2 {
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5em;
+  margin-left: 0;
+}
+.form-update-group {
+  margin-bottom: 15px;
+}
+.form-update-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-update-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-group input[type="text"] {
+  font-size: 14px;
+}
+.form-group input[type="email"] {
+  font-size: 14px;
+}
+.form-group input[type="tel"] {
+  font-size: 14px;
+}
+
+/* Validation styles */
+.form-group input[type="text"].invalid {
+  border-color: red;
+}
+.form-group input[type="email"].invalid {
+  border-color: red;
+}
+.form-group input[type="tel"].invalid {
+  border-color: red;
+}
+
+.form-group input[type="submit"] {
+  background-color: #5e2a82;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.form-group input[type="submit"]:hover {
+  background-color: #4b206b;
+}
+.form-update-group input[type="submit"] {
+  background-color: #5e2a82;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.form-update-group input[type="submit"]:hover {
+  background-color: #4b206b;
+}
+
+/* General styles for the contact display */
+.contact-display {
+  border: 1px solid #ccc; /* Light grey border */
+  padding: 15px;
+  margin-bottom: 10px; /* Space between contact items */
+  background-color: #fff; /* White background */
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  color: #333; /* Dark grey color for text */
+  margin-bottom: 10px; /* Space below the name */
+}
+
+dl {
+  margin: 0; /* Remove default margin */
+}
+
+dt {
+  font-weight: bold; /* Bold font for labels */
+}
+
+dd {
+  margin-left: 20px; /* Space before details */
+  margin-bottom: 5px; /* Space below each detail */
+}
+
+/* Styling for the buttons */
+.contact-actions {
+  display: flex;
+  justify-content: space-around; /* Evenly space the buttons */
+  margin-top: 10px; /* Space above the button area */
+}
+
+button {
+  padding: 10px 20px; /* Padding inside the buttons */
+  border: 1px solid grey;
+  
+  color: black; /* White text */
+  font-size: 16px; /* Larger font size for readability */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.edit-btn {
+   background-color: white 
+}
+
+.delete-btn {
+  background-color: white; 
+}
+
+.delete-btn:hover {
+  background-color: #e74b4b; 
+}
+
+
+
+.fade {
+  opacity: 1;
+  display: block; /* or 'flex', 'inline', etc., depending on your specific needs */
+  transition: opacity 0.5s ease, display 0s 0.5s; /* Ensures display change happens after the opacity transition */
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: visibility 0s 0.5s, opacity 0.5s ease; 
+}
+
+.modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; 
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+.remove-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.remove-filter:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+.tag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.tag-options a {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tag-options a:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.hide {
+  display: none;
+}
+
+.tag-selected {
+  border: 2px solid red;
+}

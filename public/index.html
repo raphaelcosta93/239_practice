@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Greg's Contact Manager</title>
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/handlebars.js"></script>
+  <link rel="stylesheet" href="stylesheets/app.css">
+  <!-- <script src="/javascripts/app.js"></script> -->
+  <script type="module" src="/javascripts/app.js"></script>
+  <script type="module" src="/javascripts/model.js"></script>
+  <script type="module" src="/javascripts/view.js"></script>
+  <script type="module" src="/javascripts/controller.js"></script>
+</head>
+<body>
+  <header class="bs-header">
+    <div class="container">
+      <a href="#"><h1>Contact Manager</h1></a>
+      <p>Created by Greg</p>
+    </div>
+  </header>
+  <div>
+    <div class="row well" id="add-search">
+      <div class="text-center col-sm-6">
+        <a href="#" class="add-contact-button">Add Contact</a>
+      </div>
+      <div class="text-center col-sm-6">
+        <input type="text" class="search-bar" placeholder="Search by name">
+      </div>
+      <h3>Contact groups</h3>
+        <div class="tag-options"></div>
+        <button class="remove-filter">Remove Filters</button>
+    </div>
+    
+    <div class="empty-contacts-placeholder hide"><div class="well text-center">
+      <h3>There are no contacts.</h3> 
+      <a href="#" class="add-contact-button">Add Contact</a></div>
+    </div>
+  </div>
+  <div class="form-container hidden" id="new-contact-form">
+    <h2>Add Contact</h2>
+    <form id="form">
+      <div class="form-group">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone-number">Phone Number:</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
+      </div>
+      <div id="checkbox-container"></div>
+
+      <div class="form-group submit">
+        <input type="submit" value="Submit">
+      </div>
+      <div class="form-group cancel">
+        <input type="submit" value="Cancel">
+      </div>
+      <div id="validation-messages" class="validation-messages overlay modal" style="display:none">
+        <div id="validation-content"></div>
+        <button style="color:green" type="button" id="close-validation" value="no">Okay</button>
+      </div>
+    </form>
+  </div>
+  <script id="validation-template" type="text/x-handlebars-template">
+    <p>Please edit the contact info:</p>
+    <ul>
+      {{#each messages}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </script>
+  <ul class="contacts">
+  </ul>
+  <script id="contact-template" type="text/x-handlebars-template">
+    <li class="contact-display" data-id="{{id}}" data-name="{{full_name}}">
+      <h3>{{full_name}}</h3>
+      <dl>
+        <dt>Phone Number:</dt>
+        <dd>{{phone_number}}</dd>
+        <dt>Email:</dt>
+        <dd>{{email}}</dd>
+        <dt>Tags:</dt>
+        {{#each tags}}
+        <dd class="singleTag">{{this}}</dd>
+        {{/each}}
+      </dl>
+      <div class="contact-actions">
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div style="display:none" class="overlay modal">
+        Are you sure you want to delete this contact for {{full_name}}? 
+        <button style="color:red" type="button" value="yes">Yes</button>
+        <button style="color:green" type="button" value="no">No</button>
+      </div>
+    </li>
+  </script>
+
+  <script id="contact-update-template" type="text/x-handlebars-template">
+    <div class="form-update-container hidden">
+      <h2>Update Contact</h2>
+      <form id="update-form" data-id="{{id}}">
+        <div class="form-group">
+          <label for="full-name">Full Name:</label>
+          <input type="text" id="full-name" name="full-name" value="{{full_name}}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value={{email}} required>
+        </div>
+        <div class="form-group">
+          <label for="phone-number">Phone Number:</label>
+          <input type="tel" id="phone-number" name="phone-number" value="{{phone_number}}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="tags">Tags:</label>
+          {{#each headerTags}}
+            <label>
+              <input class="tagOption" type="checkbox" name="tags" value="{{this}}">
+              {{this}}
+            </label>
+          {{/each}}
+        <div class="form-group">
+            <label for="new-tag">Add Tag:</label>
+            <input type="text" id="new-tag" name="new-tag">
+        </div>
+        </div>
+
+        <div class="form-update-group submit">
+          <input id="update-form-submit" type="submit" value="Submit">
+        </div>
+        <div class="form-update-group cancel">
+          <input type="submit" value="Cancel">
+        </div>
+        <div id="validation-update-messages" class="validation-messages overlay modal" style="display:none">
+          <div id="validation-content"></div>
+          <button style="color:green" type="button" id="close-validation" value="no">Okay</button>
+        </div>
+      </form>
+    </div>
+  </script>
+
+  <script id="checkbox-template" type="text/x-handlebars-template">
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      {{#each tags}}
+        <label>
+          <input class="tagOption" type="checkbox" name="tags" value="{{this}}">
+          {{this}}
+        </label>
+      {{/each}}
+    <div class="form-group">
+        <label for="new-tag">Add Tag:</label>
+        <input type="text" id="new-tag" name="new-tag">
+    </div>
+    </div>
+  </script>
+  
+</body>
+</html>
